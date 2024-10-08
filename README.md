@@ -12,7 +12,7 @@
 
 <!-- PROJECT SHIELDS -->
 <!--
-*** I'm using markdown "reference style" links for readability.
+***     I'm using markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
 *** See the bottom of this document for the declaration of the reference variables
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
@@ -170,3 +170,4 @@ Project Link: [https://github.com/JoaoFranco03/photography-portfolio/](https://g
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/joão-franco-452161195/
 [product-screenshot]: dist/assets/mockup.png
+
