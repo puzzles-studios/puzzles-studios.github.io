@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Gallery from '../../components/Gallery.astro';
+import { listImages } from '../../lib/galleryData';
 
 // Client images - shape matches Gallery.astro
-const clientImages = [
-  { src: '/assets/portfolio/clients/big/photo_25_2025-02-27_00-50-30.jpg', alt: 'Client Photo 1' },
-  { src: '/assets/portfolio/clients/small/photo_26_2025-02-27_00-50-30.jpg', alt: 'Client Photo 2' },
-  // Add more client images here as needed
-];
+const clientImages = listImages('clients');
 ---
 
 <BaseLayout title="Client Gallery - Puzzles Studios">

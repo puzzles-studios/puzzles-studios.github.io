@@ -1,49 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PortfolioSection from '../components/PortfolioSection.astro';
+import { listImages } from '../lib/galleryData';
 
 // Sample images for each category - organized by folder structure with balanced layouts
-const weddingImages = [
-  { src: '/assets/portfolio/wedding/big/photo_1_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/wedding/small/photo_2_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/wedding/small/photo_3_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/wedding/small/photo_4_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/wedding/small/photo_5_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/wedding/big/photo_6_2025-02-27_00-50-30.jpg' },
-];
+const weddingImages = listImages('wedding');
 
-const graduationImages = [
-  { src: '/assets/portfolio/graduation/big/photo_9_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/graduation/small/photo_7_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/graduation/small/photo_8_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/graduation/small/photo_10_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/graduation/small/photo_11_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/graduation/small/photo_12_2025-02-27_00-50-30.jpg' },
-];
+const graduationImages = listImages('graduation');
 
-const linkedinImages = [
-  { src: '/assets/portfolio/linkedin/big/photo_17_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/linkedin/small/photo_13_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/linkedin/small/photo_14_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/linkedin/small/photo_15_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/linkedin/small/photo_16_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/linkedin/small/photo_18_2025-02-27_00-50-30.jpg' },
-];
+const linkedinImages = listImages('linkedin');
 
-const portraitImages = [
-  { src: '/assets/portfolio/portrait/big/photo_23_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/portrait/small/photo_19_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/portrait/small/photo_20_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/portrait/small/photo_21_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/portrait/small/photo_22_2025-02-27_00-50-30.jpg' },
-  { src: '/assets/portfolio/portrait/small/photo_24_2025-02-27_00-50-30.jpg' },
-];
+const portraitImages = listImages('portrait');
 ---
 
 <BaseLayout title="Puzzles Studios - Portfolio">
   <div class="container mx-auto">
     <div class="text-center mb-16">
-      <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-white">PORTFOLIO</h1>
       <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
         Capturing life's most precious moments through the art of photography
       </p>
