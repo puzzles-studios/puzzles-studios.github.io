@@ -1,0 +1,10 @@
+---
+// Legacy route: immediate redirect to gallery
+---
+<script is:inline>
+  window.location.replace('/clients/gallery');
+  setTimeout(() => { window.location.href = '/clients/gallery'; }, 200);
+</script>
+<noscript>
+  <a href="/clients/gallery">Go to Client Gallery</a>
+</noscript>

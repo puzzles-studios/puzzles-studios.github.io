@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Gallery from '../../components/Gallery.astro';
+
+// Client images - shape matches Gallery.astro
+const clientImages = [
+  { src: '/assets/portfolio/clients/big/photo_25_2025-02-27_00-50-30.jpg', alt: 'Client Photo 1' },
+  { src: '/assets/portfolio/clients/small/photo_26_2025-02-27_00-50-30.jpg', alt: 'Client Photo 2' },
+  // Add more client images here as needed
+];
+---
+
+<BaseLayout title="Client Gallery - Puzzles Studios">
+  <div class="container mx-auto">
+    <div class="flex justify-between items-center pt-10 pb-8">
+      <h1 class="text-4xl font-bold">Client Gallery</h1>
+      
+    </div>
+    
+    <div class="mb-8 p-4 bg-yellow-50 dark:bg-yellow-900 rounded-lg">
+      <p class="text-sm text-yellow-800 dark:text-yellow-200">
+        🔒 Client-only gallery. Please don’t download or redistribute photos, and do not share your access link or password with anyone.
+      </p>
+    </div>
+
+    <Gallery images={clientImages} galleryName="client-gallery" compact={true} />
+    
+    <div class="mt-12 text-center">
+      <p class="text-gray-600 dark:text-gray-400 mb-4">
+        Need help downloading or have questions about your photos?
+      </p>
+      <a 
+        href="/contact" 
+        class="inline-block bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-md transition duration-300"
+      >
+        Contact Us
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<!-- No auth; Cloudflare will protect this path in production -->

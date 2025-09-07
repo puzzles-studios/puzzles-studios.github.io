@@ -1,0 +1,71 @@
+---
+export interface Props {
+  images: Array<{
+    src: string;
+    alt?: string;
+    size?: 'full' | 'half' | 'quarter';
+  }>;
+  galleryName: string;
+  compact?: boolean; // Option for minimal spacing
+}
+
+const { images, galleryName, compact = true } = Astro.props;
+const gapClass = compact ? 'gap-2' : 'gap-4';
+// Classify images into big (2-col) and small (1-col) using either explicit size or folder hint
+const isBig = (img: { src: string; size?: string }) =>
+  img.size === 'half' || img.size === 'full' || /\/(big|large)\//i.test(img.src);
+const bigList = images.filter(isBig);
+const smallList = images.filter((img) => !isBig(img));
+
+// Build alternating rows: Row 0 => [Big, Small, Small], Row 1 => [Small, Small, Big], repeat
+const ordered: typeof images = [];
+let bi = 0, si = 0, row = 0;
+while (bi < bigList.length || si < smallList.length) {
+  if (row % 2 === 0) {
+    if (bi < bigList.length) ordered.push({ ...bigList[bi++], size: 'half' });
+    if (si < smallList.length) ordered.push({ ...smallList[si++] });
+    if (si < smallList.length) ordered.push({ ...smallList[si++] });
+  } else {
+    if (si < smallList.length) ordered.push({ ...smallList[si++] });
+    if (si < smallList.length) ordered.push({ ...smallList[si++] });
+    if (bi < bigList.length) ordered.push({ ...bigList[bi++], size: 'half' });
+  }
+  row++;
+  // Safety: if neither list advanced (e.g., both empty), break to avoid infinite loop
+  if (bi >= bigList.length && si >= smallList.length) break;
+}
+---
+
+<div class={`grid grid-cols-2 md:grid-cols-4 ${gapClass}`}>
+  {ordered.map((image, index) => {
+    // Create a more balanced grid layout
+    const getGridClass = (index: number, size?: string) => {
+  // Slightly taller tiles for all sizes; ratios chosen to align cleanly across 1-col and 2-col items
+  // small (default): 5:6 (≈20% taller than square)
+  // half (2-col wide): 5:3 — same row height as one small tile
+  if (size === 'half') return 'col-span-2 md:col-span-2 aspect-[5/3]';
+  return 'col-span-1 md:col-span-1 aspect-[5/6]';
+    };
+
+    return (
+      <div class={`group relative overflow-hidden ${compact ? 'rounded-sm' : 'rounded-lg'} shadow-lg hover:shadow-xl transition-all duration-300 ${getGridClass(index, image.size)}`}>
+        <a href={image.src} data-fancybox={galleryName} data-caption={image.alt || `Photo ${index + 1}`}>
+          <img 
+            alt={image.alt || `Photo ${index + 1}`}
+            class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-500" 
+            src={image.src} 
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"></div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="bg-white bg-opacity-90 dark:bg-black dark:bg-opacity-70 rounded-full p-3 transform scale-75 group-hover:scale-100 transition-transform duration-300">
+              <svg class="w-6 h-6 text-gray-800 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    );
+  })}
+</div>

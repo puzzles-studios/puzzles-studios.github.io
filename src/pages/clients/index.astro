@@ -1,0 +1,11 @@
+---
+// Minimal redirect page kept to avoid 404 on /clients.
+---
+<script is:inline>
+	window.location.replace('/clients/gallery');
+	// Fallback for older browsers
+	setTimeout(() => { window.location.href = '/clients/gallery'; }, 200);
+	</script>
+<noscript>
+	<a href="/clients/gallery">Go to Client Gallery</a>
+</noscript>

@@ -1,0 +1,22 @@
+{
+  "name": "puzzles-studios",
+  "version": "1.0.0",
+  "description": "<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/node": "^9.4.3",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.13.5",
+    "tailwindcss": "^3.4.17"
+  }
+}
